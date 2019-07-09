@@ -12,6 +12,6 @@ public class Common implements ModInitializer
     @Override
     public void onInitialize()
     {
-        LOGGER.info("Common has been initialized.");
+        //LOGGER.info("Common has been initialized.");
     }
 }

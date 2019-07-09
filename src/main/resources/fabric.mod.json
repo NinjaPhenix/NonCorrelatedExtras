@@ -8,8 +8,7 @@
     "NinjaPhenix"
   ],
   "contact": {
-    "homepage": "https://minecraft.curseforge.com/projects/cursed-chests",
-    "sources": "https://github.com/NinjaPhenix/CursedChests"
+    "sources": "https://github.com/NinjaPhenix/NonCorrelatedExtras"
   },
   "license": "MIT",
   "icon": "assets/noncorrelatedextras/icon.png",
