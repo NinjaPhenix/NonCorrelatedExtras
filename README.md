@@ -1,2 +1,2 @@
 # NonCorrelatedExtras
-Adds some random additions to mincraft.
+Currently only adds a mixin to force creepers to break blocks, not destroy.
