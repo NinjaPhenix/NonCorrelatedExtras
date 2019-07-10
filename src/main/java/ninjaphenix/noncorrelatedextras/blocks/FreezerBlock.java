@@ -11,7 +11,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
 @SuppressWarnings("deprecation")
-public class FreezerBlock extends FluidFillableBlock
+public class FreezerBlock extends WaterFillableBlock
 {
     private static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);
 
@@ -23,5 +23,4 @@ public class FreezerBlock extends FluidFillableBlock
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, EntityContext context) { return SHAPE; }
-
 }

@@ -15,9 +15,7 @@ public class Blocks
     {
         FreezerBlock freezerBlock = new FreezerBlock();
         BlockItem freezerItem = new BlockItem(freezerBlock, new Item.Settings().group(ItemGroup.DECORATIONS));
-
         Registry.register(Registry.BLOCK, new Identifier(Common.MOD_ID, "freezer"), freezerBlock);
         Registry.register(Registry.ITEM, new Identifier(Common.MOD_ID, "freezer"), freezerItem);
     }
-
 }

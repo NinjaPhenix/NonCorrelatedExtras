@@ -2,8 +2,7 @@ package ninjaphenix.noncorrelatedextras.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.FluidDrainable;
-import net.minecraft.block.FluidFillable;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -17,46 +16,20 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
 
 @SuppressWarnings("deprecation")
-public abstract class FluidFillableBlock extends Block implements FluidFillable, FluidDrainable
+public abstract class WaterFillableBlock extends Block implements Waterloggable
 {
     private static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
-    public FluidFillableBlock(Settings settings)
+    public WaterFillableBlock(Settings settings)
     {
         super(settings);
         this.setDefaultState(this.getDefaultState().with(WATERLOGGED, false));
     }
 
     @Override
-    public Fluid tryDrainFluid(IWorld world, BlockPos pos, BlockState state)
-    {
-        if (state.get(WATERLOGGED))
-        {
-            world.setBlockState(pos, state.with(WATERLOGGED, false), 3);
-            return Fluids.WATER;
-        }
-        return Fluids.EMPTY;
-    }
-
-    @Override
     public boolean canFillWithFluid(BlockView view, BlockPos pos, BlockState state, Fluid fluid)
     {
         return fluid == Fluids.WATER;
-    }
-
-    @Override
-    public boolean tryFillWithFluid(IWorld world, BlockPos pos, BlockState bState, FluidState fState)
-    {
-        if (fState.getFluid() == Fluids.WATER)
-        {
-            if (!world.isClient())
-            {
-                world.setBlockState(pos, bState.with(WATERLOGGED, true), 3);
-                world.getFluidTickScheduler().schedule(pos, fState.getFluid(), fState.getFluid().getTickRate(world));
-            }
-            return true;
-        }
-        return false;
     }
 
     @Override
