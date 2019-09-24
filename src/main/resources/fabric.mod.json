@@ -29,8 +29,5 @@
   ],
   "requires": {
     "fabricloader": ">=0.4.0"
-  },
-  "recommends": {
-    "roughlyenoughitems": ">=2.9.5+build.133"
   }
 }

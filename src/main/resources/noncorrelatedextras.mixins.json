@@ -3,10 +3,10 @@
   "package": "ninjaphenix.noncorrelatedextras.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "CreeperEntityMixin"
+    "CreeperEntityMixin", "ServerPlayNetworkHandlerMixin", "ClientPlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
-  "minVersion": "0.7.11-SNAPSHOT"
+  "minVersion": "0.7.11"
 }
