@@ -20,9 +20,8 @@ import org.spongepowered.asm.mixin.Shadow;
 public abstract class ServerPlayNetworkHandlerMixin implements ServerPlayPacketListener
 {
 
-    @Shadow private Vec3d requestedTeleportPos;
-
     @Shadow public ServerPlayerEntity player;
+    @Shadow private Vec3d requestedTeleportPos;
 
     /**
      * @author NinjaPhenix
@@ -82,7 +81,7 @@ public abstract class ServerPlayNetworkHandlerMixin implements ServerPlayPacketL
                 ItemStack itemStack_1 = player.getEquippedStack(EquipmentSlot.CHEST);
                 if (itemStack_1.getItem() == Items.ELYTRA && ElytraItem.isUsable(itemStack_1))
                 {
-                    if(player.isFallFlying())
+                    if (player.isFallFlying())
                     {
                         player.method_14229();
                     }

@@ -38,7 +38,7 @@ public class Client implements ClientModInitializer
             {
                 if (elytraBind.isPressed())
                 {
-                    if(!client.player.abilities.flying)
+                    if (!client.player.abilities.flying)
                     {
                         final ItemStack chest = client.player.getEquippedStack(EquipmentSlot.CHEST);
                         if (chest.getItem() instanceof ElytraItem && ElytraItem.isUsable(chest))
