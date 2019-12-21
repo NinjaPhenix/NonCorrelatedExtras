@@ -1,3 +1,7 @@
 {
-  "block.noncorrelatedextras.freezer": "Freezer"
+  "noncorrelatedextras.tooltip.magnetitem.range": "Range: %s",
+  "noncorrelatedextras.tooltip.magnetitem.active": "Active: ",
+  "noncorrelatedextras.tooltip.magnetitem.on": "On",
+  "noncorrelatedextras.tooltip.magnetitem.off": "Off",
+  "item.noncorrelatedextras.magnet": "Magnet"
 }

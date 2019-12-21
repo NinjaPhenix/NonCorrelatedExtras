@@ -3,31 +3,24 @@
   "id": "noncorrelatedextras",
   "version": "${version}",
   "name": "NonCorrelatedExtras",
-  "description": "Adds some small misc things.",
+  "description": "Adds random things such as enchantable shears.",
   "authors": [
     "NinjaPhenix"
   ],
-  "contact": {
-    "sources": "https://github.com/NinjaPhenix/NonCorrelatedExtras"
+  "entrypoints": {
+    "main": ["ninjaphenix.noncorrelatedextras.Main::INSTANCE"]
   },
   "license": "MIT",
-  "icon": "assets/noncorrelatedextras/icon.png",
   "environment": "*",
-  "entrypoints": {
-    "main": [
-      "ninjaphenix.noncorrelatedextras.Common"
-    ],
-    "client": [
-      "ninjaphenix.noncorrelatedextras.Client"
-    ]
-  },
   "mixins": [
     {
       "config": "noncorrelatedextras.mixins.json",
       "environment": "*"
     }
   ],
-  "requires": {
-    "fabricloader": ">=0.4.0"
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "minecraft": ">=1.15.1",
+    "fabric": ">=0.4.24"
   }
 }

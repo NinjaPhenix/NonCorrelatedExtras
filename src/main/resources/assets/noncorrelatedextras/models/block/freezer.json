@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "noncorrelatedextras:block/freezer",
-    "top": "noncorrelatedextras:block/freezer",
-    "side": "noncorrelatedextras:block/freezer"
-  }
-}
