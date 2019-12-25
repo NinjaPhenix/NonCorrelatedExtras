@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(Items.class)
-public class ItemsMixin
+public class EnchantableShear
 {
     @Inject(method="register(Lnet/minecraft/util/Identifier;Lnet/minecraft/item/Item;)Lnet/minecraft/item/Item;", cancellable = true,
             at=@At("HEAD"), locals = LocalCapture.CAPTURE_FAILHARD)

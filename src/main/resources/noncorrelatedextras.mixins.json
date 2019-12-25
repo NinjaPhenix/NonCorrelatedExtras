@@ -1,9 +1,13 @@
 {
   "required": true,
   "package": "ninjaphenix.noncorrelatedextras.mixins",
+  "plugin": "ninjaphenix.noncorrelatedextras.config.MixinPlugin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ItemsMixin", "ServerWorldMixin"
+    "CreeperNoGrief", "EnchantableShear", "MagnetTrinketCompat"
+  ],
+  "client": [
+    "TrinketModFix", "PolarizedArmorTextureFix"
   ],
   "injectors": {
     "defaultRequire": 1

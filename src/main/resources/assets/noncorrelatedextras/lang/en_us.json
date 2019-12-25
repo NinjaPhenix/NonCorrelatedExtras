@@ -1,7 +1,11 @@
 {
-  "noncorrelatedextras.tooltip.magnetitem.range": "Range: %s",
-  "noncorrelatedextras.tooltip.magnetitem.active": "Active: ",
-  "noncorrelatedextras.tooltip.magnetitem.on": "On",
-  "noncorrelatedextras.tooltip.magnetitem.off": "Off",
-  "item.noncorrelatedextras.magnet": "Magnet"
+  "noncorrelatedextras.tooltip.magnet.range": "Range: %s / %s",
+  "noncorrelatedextras.tooltip.magnet.extra_range": "%s (+%s from armor)",
+  "item.noncorrelatedextras.magnet": "Magnet",
+  "attribute.name.generic.max_magnet_range": "Max Magnet Range",
+  "item.noncorrelatedextras.polarized_iron_helmet": "Polarized Iron Helmet",
+  "item.noncorrelatedextras.polarized_iron_chestplate": "Polarized Iron Chestplate",
+  "item.noncorrelatedextras.polarized_iron_leggings": "Polarized Iron Leggings",
+  "item.noncorrelatedextras.polarized_iron_boots": "Polarized Iron Boots",
+  "item.noncorrelatedextras.polarized_iron": "Polarized Iron"
 }
