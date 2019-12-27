@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "noncorrelatedextras:polarized_iron_ingot"
+    }
+  },
+  "result": {
+    "item": "noncorrelatedextras:polarized_iron_helmet"
+  }
+}

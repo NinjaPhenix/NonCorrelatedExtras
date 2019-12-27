@@ -17,6 +17,8 @@ public class MixinPlugin implements IMixinConfigPlugin
         featureMixinMap = new HashMap<>();
         featureMixinMap.put("ninjaphenix.noncorrelatedextras.mixins.EnchantableShear", "enchantable_shears");
         featureMixinMap.put("ninjaphenix.noncorrelatedextras.mixins.CreeperNoGrief", "creepers_no_grief");
+        featureMixinMap.put("ninjaphenix.noncorrelatedextras.mixins.PolarizedArmorProjectileReflection", "magnet");
+        featureMixinMap.put("ninjaphenix.noncorrelatedextras.mixins.PolarizedArmorTextureFix", "magnet");
     }
     @Override
     public void onLoad(String mixinPackage)

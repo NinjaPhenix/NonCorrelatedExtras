@@ -36,6 +36,7 @@ public class MagnetItem extends Item
     public static void magnetTick(PlayerEntity player, ItemStack stack)
     {
         if(player.isSneaking()) return;
+        ensureValidMagnetRange(player, stack);
         final World world = player.getEntityWorld();
 
         final int range = getMagnetRange(stack);
@@ -49,6 +50,19 @@ public class MagnetItem extends Item
         });
     }
 
+    private static void ensureValidMagnetRange(PlayerEntity player, ItemStack stack)
+    {
+        final int range = getMagnetRange(stack);
+        if(range > MAX_RANGE)
+        {
+            final int max = getMagnetMaxRange(player);
+            if(range > max)
+            {
+                setMagnetRange(stack, max);
+            }
+        }
+    }
+
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
     {
@@ -58,7 +72,7 @@ public class MagnetItem extends Item
         }
     }
 
-    private int getMagnetMaxRange(PlayerEntity player)
+    private static int getMagnetMaxRange(PlayerEntity player)
     {
         int range = MAX_RANGE;
         if(player != null)
@@ -104,11 +118,17 @@ public class MagnetItem extends Item
         return tag.getInt("range");
     }
 
-    private void increaseMagnetRange(ItemStack stack, PlayerEntity user)
+    private static void increaseMagnetRange(ItemStack stack, PlayerEntity user)
     {
         int magnetRange = getMagnetRange(stack) + 1;
         if (magnetRange > getMagnetMaxRange(user)) magnetRange = 1;
         CompoundTag tag = stack.getOrCreateTag();
         tag.putInt("range", magnetRange);
+    }
+
+    private static void setMagnetRange(ItemStack stack, int range)
+    {
+        CompoundTag tag = stack.getOrCreateTag();
+        tag.putInt("range", range);
     }
 }

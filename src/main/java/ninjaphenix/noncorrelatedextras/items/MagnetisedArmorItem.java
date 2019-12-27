@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class MagnetisedArmorItem extends ArmorItem
 {
-    private static final EntityAttribute MAGNET_RANGE = new ClampedEntityAttribute(null, "generic.max_magnet_range", 0, 0, Double.MAX_VALUE);
+    public static final EntityAttribute MAGNET_RANGE = new ClampedEntityAttribute(null, "generic.max_magnet_range", 0, 0, Double.MAX_VALUE);
     private static final ArmorMaterial MATERIAL = new MagnetisedArmorMaterial();
     private final int magnetModifier;
 

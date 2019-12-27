@@ -56,4 +56,6 @@ public class Config
     public int getMagnetMaxRange() { return magnet_range; }
 
     public int getAdditionalMagnetRange(EquipmentSlot type) { return polarized_iron_armor_additional_magnet_range.getOrDefault(type, 0); }
+
+    public double getProjectileReflectionChance() { return polarized_iron_armor_reflection_chance; }
 }
