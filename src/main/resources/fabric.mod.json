@@ -8,7 +8,8 @@
     "NinjaPhenix"
   ],
   "entrypoints": {
-    "main": ["ninjaphenix.noncorrelatedextras.Main::INSTANCE"]
+    "main": ["ninjaphenix.noncorrelatedextras.Main::INSTANCE"],
+    "client": ["ninjaphenix.noncorrelatedextras.client.MainClient::INSTANCE"]
   },
   "license": "MIT",
   "environment": "*",

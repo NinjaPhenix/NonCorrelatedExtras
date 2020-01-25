@@ -11,13 +11,13 @@ import ninjaphenix.noncorrelatedextras.config.Config;
 
 import java.util.UUID;
 
-public class MagnetisedArmorItem extends ArmorItem
+public class MagnetisedArmourItem extends ArmorItem
 {
     public static final EntityAttribute MAGNET_RANGE = new ClampedEntityAttribute(null, "generic.max_magnet_range", 0, 0, Double.MAX_VALUE);
     private static final ArmorMaterial MATERIAL = new MagnetisedArmorMaterial();
     private final int magnetModifier;
 
-    public MagnetisedArmorItem(EquipmentSlot slot, Settings settings)
+    public MagnetisedArmourItem(EquipmentSlot slot, Settings settings)
     {
         super(MATERIAL, slot, settings);
         magnetModifier = Config.INSTANCE.getAdditionalMagnetRange(slot);
@@ -34,4 +34,6 @@ public class MagnetisedArmorItem extends ArmorItem
         }
         return multimap;
     }
+
+
 }

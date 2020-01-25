@@ -34,13 +34,14 @@ public class Config
 
     private HashMap<String, Boolean> getDefaultEnabledFeatures()
     {
-        HashMap<String, Boolean> rv = new HashMap<>();
-        rv.put("magnet", true);
-        rv.put("creepers_no_grief", true);
-        rv.put("enchantable_shears", true);
-        rv.put("polarized_iron_armor", true);
-        rv.put("polarized_iron_armor_reflects_projectiles", true);
-        return rv;
+        HashMap<String, Boolean> map = new HashMap<>();
+        map.put("magnet", true);
+        map.put("creepers_break_blocks", false);
+        map.put("enchantable_shears", false);
+        map.put("polarized_iron_armor", true);
+        map.put("polarized_iron_armor_reflects_projectiles", true);
+        map.put("farming_hoes", false);
+        return map;
     }
 
     public static void initialize()
@@ -49,7 +50,7 @@ public class Config
         INSTANCE = ConfigManager.loadConfig(Config.class, configDirectory.resolve("NonCorrelatedExtras.json").toFile(), Config::new);
     }
 
-    public boolean isFeatureEnabled(String feature) { return feature == null || enabled_features.getOrDefault(feature, false); }
+    public Boolean isFeatureEnabled(String feature) { return feature == null || enabled_features.getOrDefault(feature, Boolean.FALSE); }
 
     public double getMagnetSpeed() { return magnet_speed; }
 

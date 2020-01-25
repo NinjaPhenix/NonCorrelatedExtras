@@ -1,6 +1,6 @@
 package ninjaphenix.noncorrelatedextras.config;
 
-import net.fabricmc.loader.api.FabricLoader;
+import ninjaphenix.noncorrelatedextras.core.FeatureManager;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -11,21 +11,12 @@ import java.util.Set;
 
 public class MixinPlugin implements IMixinConfigPlugin
 {
-    private final HashMap<String, String> featureMixinMap;
-    public MixinPlugin()
-    {
-        featureMixinMap = new HashMap<>();
-        featureMixinMap.put("ninjaphenix.noncorrelatedextras.mixins.EnchantableShear", "enchantable_shears");
-        featureMixinMap.put("ninjaphenix.noncorrelatedextras.mixins.CreeperNoGrief", "creepers_no_grief");
-        featureMixinMap.put("ninjaphenix.noncorrelatedextras.mixins.PolarizedArmorProjectileReflection", "magnet");
-        featureMixinMap.put("ninjaphenix.noncorrelatedextras.mixins.PolarizedArmorTextureFix", "magnet");
-    }
+    private static HashMap<String, Boolean> enabledMixins;
+
+    public MixinPlugin() {}
+
     @Override
-    public void onLoad(String mixinPackage)
-    {
-        if(Config.INSTANCE == null)
-            Config.initialize();
-    }
+    public void onLoad(String mixinPackage) { if(enabledMixins == null) enabledMixins = FeatureManager.getMixinMap(); }
 
     @Override
     public String getRefMapperConfig() { return null; }
@@ -33,9 +24,7 @@ public class MixinPlugin implements IMixinConfigPlugin
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName)
     {
-        if(mixinClassName.equals("ninjaphenix.noncorrelatedextras.mixins.MagnetTrinketCompat") && Config.INSTANCE.isFeatureEnabled("magnet")) return FabricLoader.getInstance().isModLoaded("trinkets");
-        if(mixinClassName.equals("ninjaphenix.noncorrelatedextras.mixins.TrinketModFix") && Config.INSTANCE.isFeatureEnabled("magnet")) return FabricLoader.getInstance().isModLoaded("trinkets");
-        return Config.INSTANCE.isFeatureEnabled(featureMixinMap.getOrDefault(mixinClassName, null));
+        return enabledMixins.getOrDefault(mixinClassName.substring(mixinClassName.lastIndexOf('.') + 1), Boolean.FALSE);
     }
 
     @Override

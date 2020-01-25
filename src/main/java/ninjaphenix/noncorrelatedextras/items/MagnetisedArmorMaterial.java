@@ -5,7 +5,9 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.registry.Registry;
 import ninjaphenix.noncorrelatedextras.Main;
+import ninjaphenix.noncorrelatedextras.core.FeatureManager;
 
 public class MagnetisedArmorMaterial implements ArmorMaterial
 {
@@ -25,7 +27,7 @@ public class MagnetisedArmorMaterial implements ArmorMaterial
     public SoundEvent getEquipSound() { return SoundEvents.ITEM_ARMOR_EQUIP_CHAIN; }
 
     @Override
-    public Ingredient getRepairIngredient() { return Ingredient.ofItems(Main.POLARIZED_IRON); }
+    public Ingredient getRepairIngredient() { return Ingredient.ofItems(Registry.ITEM.get(Main.getId("polarized_iron_ingot"))); }
 
     @Override
     public String getName() { return "polarized_iron"; }
