@@ -17,36 +17,36 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = { ProjectileEntity.class, TridentEntity.class })
 public class PolarizedArmorProjectileReflection
 {
-    private static final double chance = Config.INSTANCE.getProjectileReflectionChance();
+	private static final double chance = Config.INSTANCE.getProjectileReflectionChance();
 
-    @Inject(method = "onEntityHit(Lnet/minecraft/util/hit/EntityHitResult;)V", at = @At("HEAD"), cancellable = true)
-    private void onEntityHit(EntityHitResult hit, CallbackInfo ci)
-    {
-        World world = hit.getEntity().world;
-        if (world.getRandom().nextDouble() <= chance)
-        {
-            Entity e = hit.getEntity();
-            if (e instanceof PlayerEntity)
-            {
-                PlayerEntity p = (PlayerEntity) e;
-                if (p.getEquippedStack(EquipmentSlot.HEAD).getItem() instanceof MagnetisedArmourItem)
-                {
-                    if (p.getEquippedStack(EquipmentSlot.CHEST).getItem() instanceof MagnetisedArmourItem)
-                    {
-                        if (p.getEquippedStack(EquipmentSlot.LEGS).getItem() instanceof MagnetisedArmourItem)
-                        {
-                            if (p.getEquippedStack(EquipmentSlot.FEET).getItem() instanceof MagnetisedArmourItem)
-                            {
-                                ProjectileEntity self = (ProjectileEntity) (Object) this;
-                                self.setVelocity(self.getVelocity().multiply(-1));
-                                ci.cancel();
-                            }
-                        }
-                    }
-                }
-            }
+	@Inject(method = "onEntityHit(Lnet/minecraft/util/hit/EntityHitResult;)V", at = @At("HEAD"), cancellable = true)
+	private void onEntityHit(EntityHitResult hit, CallbackInfo ci)
+	{
+		World world = hit.getEntity().world;
+		if (world.getRandom().nextDouble() <= chance)
+		{
+			Entity e = hit.getEntity();
+			if (e instanceof PlayerEntity)
+			{
+				PlayerEntity p = (PlayerEntity) e;
+				if (p.getEquippedStack(EquipmentSlot.HEAD).getItem() instanceof MagnetisedArmourItem)
+				{
+					if (p.getEquippedStack(EquipmentSlot.CHEST).getItem() instanceof MagnetisedArmourItem)
+					{
+						if (p.getEquippedStack(EquipmentSlot.LEGS).getItem() instanceof MagnetisedArmourItem)
+						{
+							if (p.getEquippedStack(EquipmentSlot.FEET).getItem() instanceof MagnetisedArmourItem)
+							{
+								ProjectileEntity self = (ProjectileEntity) (Object) this;
+								self.setVelocity(self.getVelocity().multiply(-1));
+								ci.cancel();
+							}
+						}
+					}
+				}
+			}
 
-        }
-    }
+		}
+	}
 
 }

@@ -14,19 +14,19 @@ import java.util.function.Function;
 @Environment(EnvType.CLIENT)
 public class PolarizedArmorTextureFix
 {
-    @ModifyArg(method = "getArmorTexture(Lnet/minecraft/item/ArmorItem;ZLjava/lang/String;)Lnet/minecraft/util/Identifier;",
-            at = @At(value = "INVOKE", target = "Ljava/util/Map;computeIfAbsent(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;"), index = 0)
-    private Object getArmorTexture(Object string, Function<String, Identifier> newID)
-    {
-        if(string instanceof String)
-        {
-            if (((String) string).contains("polarized_iron"))
-            {
-                return "noncorrelatedextras:" + string; // I have no clue if modifying the local like this will work.
-            }
-        }
+	@ModifyArg(method = "getArmorTexture(Lnet/minecraft/item/ArmorItem;ZLjava/lang/String;)Lnet/minecraft/util/Identifier;",
+			at = @At(value = "INVOKE", target = "Ljava/util/Map;computeIfAbsent(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;"), index = 0)
+	private Object getArmorTexture(Object string, Function<String, Identifier> newID)
+	{
+		if (string instanceof String)
+		{
+			if (((String) string).contains("polarized_iron"))
+			{
+				return "noncorrelatedextras:" + string; // I have no clue if modifying the local like this will work.
+			}
+		}
 
-        return string;
-    }
+		return string;
+	}
 
 }

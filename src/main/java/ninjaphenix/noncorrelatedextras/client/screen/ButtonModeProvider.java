@@ -8,7 +8,7 @@ import net.minecraft.text.Text;
 @Environment(EnvType.CLIENT)
 public interface ButtonModeProvider
 {
-    Sprite getSprite();
+	Sprite getSprite();
 
-    Text getText();
+	Text getText();
 }

@@ -22,6 +22,7 @@ public class FeatureManager
 		configs.add(new FarmingHoesFeatureConfig(Config.INSTANCE.isFeatureEnabled("farming_hoes")));
 		configs.add(new EnchantableShearsFeatureConfig(Config.INSTANCE.isFeatureEnabled("enchantable_shears")));
 		configs.add(new CreeperBreakBlocksFeatureConfig(Config.INSTANCE.isFeatureEnabled("creepers_break_blocks")));
+		configs.add(new PeacefulOnlyRecipeFeatureConfig(Config.INSTANCE.isFeatureEnabled("peaceful_only_recipes")));
 	}
 
 	public static void initialise()

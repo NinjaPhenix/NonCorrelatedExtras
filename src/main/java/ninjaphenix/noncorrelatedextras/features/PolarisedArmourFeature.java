@@ -11,13 +11,13 @@ import ninjaphenix.noncorrelatedextras.items.MagnetisedArmourItem;
 
 public class PolarisedArmourFeature extends Feature implements ItemAdder
 {
-    @Override
-    public void registerItems()
-    {
-        final Item.Settings settings = new Item.Settings().group(ItemGroup.COMBAT);
-        Registry.register(Registry.ITEM, Main.getId("polarized_iron_helmet"), new MagnetisedArmourItem(EquipmentSlot.HEAD, settings));
-        Registry.register(Registry.ITEM, Main.getId("polarized_iron_chestplate"), new MagnetisedArmourItem(EquipmentSlot.CHEST, settings));
-        Registry.register(Registry.ITEM, Main.getId("polarized_iron_leggings"), new MagnetisedArmourItem(EquipmentSlot.LEGS, settings));
-        Registry.register(Registry.ITEM, Main.getId("polarized_iron_boots"), new MagnetisedArmourItem(EquipmentSlot.FEET, settings));
-    }
+	@Override
+	public void registerItems()
+	{
+		final Item.Settings settings = new Item.Settings().group(ItemGroup.COMBAT);
+		Registry.register(Registry.ITEM, Main.getId("polarized_iron_helmet"), new MagnetisedArmourItem(EquipmentSlot.HEAD, settings));
+		Registry.register(Registry.ITEM, Main.getId("polarized_iron_chestplate"), new MagnetisedArmourItem(EquipmentSlot.CHEST, settings));
+		Registry.register(Registry.ITEM, Main.getId("polarized_iron_leggings"), new MagnetisedArmourItem(EquipmentSlot.LEGS, settings));
+		Registry.register(Registry.ITEM, Main.getId("polarized_iron_boots"), new MagnetisedArmourItem(EquipmentSlot.FEET, settings));
+	}
 }

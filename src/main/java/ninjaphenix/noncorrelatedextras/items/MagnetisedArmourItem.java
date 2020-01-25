@@ -13,27 +13,27 @@ import java.util.UUID;
 
 public class MagnetisedArmourItem extends ArmorItem
 {
-    public static final EntityAttribute MAGNET_RANGE = new ClampedEntityAttribute(null, "generic.max_magnet_range", 0, 0, Double.MAX_VALUE);
-    private static final ArmorMaterial MATERIAL = new MagnetisedArmorMaterial();
-    private final int magnetModifier;
+	public static final EntityAttribute MAGNET_RANGE = new ClampedEntityAttribute(null, "generic.max_magnet_range", 0, 0, Double.MAX_VALUE);
+	private static final ArmorMaterial MATERIAL = new MagnetisedArmorMaterial();
+	private final int magnetModifier;
 
-    public MagnetisedArmourItem(EquipmentSlot slot, Settings settings)
-    {
-        super(MATERIAL, slot, settings);
-        magnetModifier = Config.INSTANCE.getAdditionalMagnetRange(slot);
-    }
+	public MagnetisedArmourItem(EquipmentSlot slot, Settings settings)
+	{
+		super(MATERIAL, slot, settings);
+		magnetModifier = Config.INSTANCE.getAdditionalMagnetRange(slot);
+	}
 
-    @Override
-    public Multimap<String, EntityAttributeModifier> getModifiers(EquipmentSlot slot)
-    {
-        Multimap<String, EntityAttributeModifier> multimap = super.getModifiers(slot);
-        if (slot == this.slot)
-        {
-            multimap.put(MAGNET_RANGE.getId(),
-                    new EntityAttributeModifier(UUID.randomUUID(), "Magnet modifier", this.magnetModifier, EntityAttributeModifier.Operation.ADDITION));
-        }
-        return multimap;
-    }
+	@Override
+	public Multimap<String, EntityAttributeModifier> getModifiers(EquipmentSlot slot)
+	{
+		Multimap<String, EntityAttributeModifier> multimap = super.getModifiers(slot);
+		if (slot == this.slot)
+		{
+			multimap.put(MAGNET_RANGE.getId(),
+					new EntityAttributeModifier(UUID.randomUUID(), "Magnet modifier", this.magnetModifier, EntityAttributeModifier.Operation.ADDITION));
+		}
+		return multimap;
+	}
 
 
 }

@@ -16,21 +16,23 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MinecraftClient.class)
 public class TrinketModFix
 {
-    @Shadow public ClientPlayerEntity player;
+	@Shadow public ClientPlayerEntity player;
 
-    @Inject(at=@At("HEAD"), method= "tick()V")
-    private void tick(CallbackInfo ci)
-    {
-        if(player != null)
-        {
-            Inventory inv = TrinketsApi.getTrinketsInventory(player);
-            for (int i = 0; i < inv.getInvSize(); i++) {
-                ItemStack stack = inv.getInvStack(i);
-                if (stack.getItem() instanceof MagnetItem) {
-                    ITrinket trinket = (ITrinket) stack.getItem();
-                    trinket.tick(player, stack);
-                }
-            }
-        }
-    }
+	@Inject(at = @At("HEAD"), method = "tick()V")
+	private void tick(CallbackInfo ci)
+	{
+		if (player != null)
+		{
+			Inventory inv = TrinketsApi.getTrinketsInventory(player);
+			for (int i = 0; i < inv.getInvSize(); i++)
+			{
+				ItemStack stack = inv.getInvStack(i);
+				if (stack.getItem() instanceof MagnetItem)
+				{
+					ITrinket trinket = (ITrinket) stack.getItem();
+					trinket.tick(player, stack);
+				}
+			}
+		}
+	}
 }

@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 public abstract class FeatureConfig<T extends Feature>
 {
-    private final Boolean enabled;
+	private final Boolean enabled;
 
-    protected FeatureConfig(Boolean enabled) { this.enabled = enabled; }
+	protected FeatureConfig(Boolean enabled) { this.enabled = enabled; }
 
-    public Boolean isEnabled() { return enabled; }
+	public Boolean isEnabled() { return enabled; }
 
-    public abstract T getFeature();
+	public abstract T getFeature();
 
-    public HashMap<String, Boolean> getMixins() { return new HashMap<>(); }
+	public HashMap<String, Boolean> getMixins() { return new HashMap<>(); }
 }

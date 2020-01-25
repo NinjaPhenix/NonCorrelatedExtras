@@ -4,7 +4,7 @@
   "plugin": "ninjaphenix.noncorrelatedextras.config.MixinPlugin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "CreeperBreakBlocks", "EnchantableShear", "MagnetTrinketCompat", "PolarizedArmorProjectileReflection"
+    "CreeperBreakBlocks", "EnchantableShear", "MagnetTrinketCompat", "PolarizedArmorProjectileReflection", "ShapedRecipeAccessor", "ShapelessRecipeAccessor"
   ],
   "client": [
     "TrinketModFix", "PolarizedArmorTextureFix"
