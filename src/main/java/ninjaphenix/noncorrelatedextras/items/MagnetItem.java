@@ -40,27 +40,12 @@ public class MagnetItem extends Item
 	{
 		if (player.isSneaking()) { return; }
 		ensureValidMagnetRange(player, stack);
-		final World world = player.getEntityWorld();
 		final int range = getMagnetRange(stack);
-		final boolean mode = getMagnetMode(stack);
-		final Vec3d finePos = player.getPos().add(0, 0.1, 0);
-		final List<ItemEntity> entities = world.getEntities(EntityType.ITEM, new Box(finePos.subtract(range, range, range),
+		final Vec3d finePos = player.getPos().add(0, 0.25, 0);
+		final List<ItemEntity> entities = player.getEntityWorld().getEntities(EntityType.ITEM, new Box(finePos.subtract(range, range, range),
 				finePos.add(range, range, range)), EntityPredicates.EXCEPT_SPECTATOR);
-		if (mode)
-		{
-			for (ItemEntity item : entities)
-			{
-				if (!item.cannotPickup()) { item.onPlayerCollision(player); }
-			}
-		}
-		else
-		{
-			for (ItemEntity item : entities)
-			{
-				final Vec3d vel = finePos.subtract(item.getPos()).multiply(SPEED);
-				item.setVelocity(vel);
-			}
-		}
+		if (getMagnetMode(stack)) { for (ItemEntity item : entities) { if (!item.cannotPickup()) { item.onPlayerCollision(player); } } }
+		else { for (ItemEntity item : entities) { item.setVelocity(finePos.subtract(item.getPos()).multiply(SPEED)); } }
 	}
 
 	private static void ensureValidMagnetRange(PlayerEntity player, ItemStack stack)
@@ -102,8 +87,7 @@ public class MagnetItem extends Item
 	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context)
 	{
-		PlayerEntity player = MinecraftClient.getInstance().player;
-		final int magnet_range = getMagnetMaxRange(player);
+		final int magnet_range = getMagnetMaxRange(MinecraftClient.getInstance().player);
 		Text rangeText = new TranslatableText("noncorrelatedextras.tooltip.magnet.range",
 				new LiteralText(String.valueOf(getMagnetRange(stack))).formatted(Formatting.DARK_GRAY),
 				new LiteralText(String.valueOf(magnet_range)).formatted(Formatting.DARK_GRAY)).formatted(Formatting.GRAY);

@@ -27,11 +27,7 @@ public class FeatureManager
 
 	public static void initialise()
 	{
-		configs.forEach(config ->
-		{
-			if (config.isEnabled()) { features.add(config.getFeature()); }
-		});
-
+		configs.forEach(config -> { if (config.isEnabled()) { features.add(config.getFeature()); } });
 		features.forEach(feature ->
 		{
 			feature.initialise();
@@ -45,10 +41,7 @@ public class FeatureManager
 	public static HashMap<String, Boolean> getMixinMap()
 	{
 		HashMap<String, Boolean> map = new HashMap<>();
-		configs.forEach(featureConfig -> featureConfig.getMixins().forEach((str, bool) ->
-		{
-			if (bool) { map.putIfAbsent(str, Boolean.TRUE); }
-		}));
+		configs.forEach(featureConfig -> featureConfig.getMixins().forEach((str, bool) -> { if (bool) { map.putIfAbsent(str, Boolean.TRUE); } }));
 		return map;
 	}
 }

@@ -5,6 +5,7 @@ import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import ninjaphenix.noncorrelatedextras.items.MagnetItem;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,18 +22,13 @@ public class TrinketModFix
 	@Inject(at = @At("HEAD"), method = "tick()V")
 	private void tick(CallbackInfo ci)
 	{
-		if (player != null)
+		if (player == null) { return; }
+		final Inventory inv = TrinketsApi.getTrinketsInventory(player);
+		for (int i = 0; i < inv.getInvSize(); i++)
 		{
-			Inventory inv = TrinketsApi.getTrinketsInventory(player);
-			for (int i = 0; i < inv.getInvSize(); i++)
-			{
-				ItemStack stack = inv.getInvStack(i);
-				if (stack.getItem() instanceof MagnetItem)
-				{
-					ITrinket trinket = (ITrinket) stack.getItem();
-					trinket.tick(player, stack);
-				}
-			}
+			final ItemStack stack = inv.getInvStack(i);
+			final Item item = stack.getItem();
+			if (item instanceof MagnetItem) { ((ITrinket) item).tick(player, stack); }
 		}
 	}
 }

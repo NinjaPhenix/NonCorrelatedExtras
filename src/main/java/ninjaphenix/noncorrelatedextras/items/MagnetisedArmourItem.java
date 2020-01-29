@@ -34,6 +34,4 @@ public class MagnetisedArmourItem extends ArmorItem
 		}
 		return multimap;
 	}
-
-
 }

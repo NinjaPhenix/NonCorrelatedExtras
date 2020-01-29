@@ -36,12 +36,12 @@ public class Config
 	{
 		HashMap<String, Boolean> map = new HashMap<>();
 		map.put("magnet", true);
-		map.put("creepers_break_blocks", false);
-		map.put("enchantable_shears", false);
+		map.put("creepers_break_blocks", true);
+		map.put("enchantable_shears", true);
 		map.put("polarized_iron_armor", true);
 		map.put("polarized_iron_armor_reflects_projectiles", true);
-		map.put("farming_hoes", false);
-		map.put("peaceful_only_recipes", false);
+		map.put("farming_hoes", true);
+		map.put("peaceful_only_recipes", true);
 		return map;
 	}
 

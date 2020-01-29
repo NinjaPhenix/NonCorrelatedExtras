@@ -14,24 +14,21 @@ public class FarmingHoesFeature extends Feature
 	{
 		AttackBlockCallback.EVENT.register((player, world, hand, pos, direction) ->
 		{
-			ItemStack handStack = player.getStackInHand(hand);
+			final ItemStack handStack = player.getStackInHand(hand);
 			if (handStack.getItem() instanceof HoeItem)
 			{
-				BlockState state = world.getBlockState(pos);
-				Block block = state.getBlock();
+				final BlockState state = world.getBlockState(pos);
+				final Block block = state.getBlock();
 				if (block instanceof CropBlock)
 				{
-					CropBlock cropBlock = (CropBlock) block;
+					final CropBlock cropBlock = (CropBlock) block;
 					if (state.get(cropBlock.getAgeProperty()) == cropBlock.getMaxAge()) { return ActionResult.PASS; }
 				}
 				else if (block instanceof CactusBlock || block instanceof SugarCaneBlock)
 				{
 					if (world.getBlockState(pos.down()).getBlock() == block) { return ActionResult.PASS; }
 				}
-				else if (block instanceof CocoaBlock)
-				{
-					if (state.get(CocoaBlock.AGE) == 2) { return ActionResult.PASS; }
-				}
+				else if (block instanceof CocoaBlock) { if (state.get(CocoaBlock.AGE) == 2) { return ActionResult.PASS; } }
 				else if (block instanceof PumpkinBlock || block instanceof MelonBlock || block instanceof CarvedPumpkinBlock /* 1.12.2 support*/)
 				{
 					return ActionResult.PASS;

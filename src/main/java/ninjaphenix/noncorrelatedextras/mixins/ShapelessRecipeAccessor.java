@@ -12,8 +12,5 @@ public class ShapelessRecipeAccessor implements RecipeGroupAccessor
 	@Shadow @Final private String group;
 
 	@Override
-	public String getGroupA()
-	{
-		return group;
-	}
+	public String getGroupA() { return group; }
 }

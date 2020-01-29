@@ -17,10 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MagnetTrinketCompat implements ITrinket
 {
 	@Override
-	public boolean canWearInSlot(String group, String slot)
-	{
-		return slot.equals(Slots.RING);
-	}
+	public boolean canWearInSlot(String group, String slot) { return slot.equals(Slots.RING); }
 
 	@Override
 	public void tick(PlayerEntity player, ItemStack stack) { MagnetItem.magnetTick(player, stack); }
@@ -28,9 +25,6 @@ public class MagnetTrinketCompat implements ITrinket
 	@Inject(at = @At("HEAD"), method = "use(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/TypedActionResult;", cancellable = true)
 	private void use(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> cir)
 	{
-		if (!user.isSneaking())
-		{
-			cir.setReturnValue(ITrinket.equipTrinket(user, hand));
-		}
+		if (!user.isSneaking()) { cir.setReturnValue(ITrinket.equipTrinket(user, hand)); }
 	}
 }

@@ -15,10 +15,7 @@ import ninjaphenix.noncorrelatedextras.core.ItemAdder;
 public class PolarisedIronFeature extends Feature implements BlockAdder, ItemAdder
 {
 	@Override
-	public void registerBlocks()
-	{
-		Registry.register(Registry.BLOCK, Main.getId("polarized_iron_block"), new Block(Block.Settings.copy(Blocks.IRON_BLOCK)));
-	}
+	public void registerBlocks() { Registry.register(Registry.BLOCK, Main.getId("polarized_iron_block"), new Block(Block.Settings.copy(Blocks.IRON_BLOCK))); }
 
 	@Override
 	public void registerItems()

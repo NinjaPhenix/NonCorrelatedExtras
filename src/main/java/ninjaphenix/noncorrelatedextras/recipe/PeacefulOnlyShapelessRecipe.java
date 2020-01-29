@@ -19,7 +19,7 @@ public class PeacefulOnlyShapelessRecipe extends ShapelessRecipe
 	@Override
 	public boolean matches(CraftingInventory craftingInventory, World world)
 	{
-		if (world.getDifficulty() != Difficulty.PEACEFUL) { return false; }
-		return super.matches(craftingInventory, world);
+		if (world.getDifficulty() == Difficulty.PEACEFUL) { return super.matches(craftingInventory, world); }
+		return false;
 	}
 }

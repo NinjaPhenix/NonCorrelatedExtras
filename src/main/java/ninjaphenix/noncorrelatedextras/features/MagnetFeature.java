@@ -77,32 +77,35 @@ public class MagnetFeature extends Feature implements ItemAdder
 		}
 	}
 
+	@Environment(EnvType.CLIENT)
+	private static class Client
+	{
+		static void init()
+		{
+			ClientSidePacketRegistry.INSTANCE.register(MAGNET_OPEN_SCREEN_PACKET_ID, (context, buffer) ->
+			{
+				Text title = buffer.readText();
+				int maxRange = buffer.readInt() - 1;
+				int currentRange = buffer.readInt();
+				boolean mode = buffer.readBoolean();
+				context.getTaskQueue().execute(() -> MinecraftClient.getInstance().openScreen(new MagnetScreen(title, maxRange, currentRange, mode)));
+			});
+
+			ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEX).register((spriteAtlasTexture, registry) ->
+			{
+				registry.register(Main.getId("screen/pull"));
+				registry.register(Main.getId("screen/teleport"));
+			});
+		}
+	}
+
 	@Override
 	@Environment(EnvType.CLIENT)
 	public void initialiseClient()
 	{
-		ClientSidePacketRegistry.INSTANCE.register(MAGNET_OPEN_SCREEN_PACKET_ID, (context, buffer) ->
-		{
-			Text title = buffer.readText();
-			int maxRange = buffer.readInt() - 1;
-			int currentRange = buffer.readInt();
-			boolean mode = buffer.readBoolean();
-			context.getTaskQueue().execute(() ->
-			{
-				MinecraftClient.getInstance().openScreen(new MagnetScreen(title, maxRange, currentRange, mode));
-			});
-		});
-
-		ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEX).register((spriteAtlasTexture, registry) ->
-		{
-			registry.register(Main.getId("screen/pull"));
-			registry.register(Main.getId("screen/teleport"));
-		});
+		Client.init();
 	}
 
 	@Override
-	public void registerItems()
-	{
-		Registry.register(Registry.ITEM, Main.getId("magnet"), new MagnetItem(new Item.Settings().group(ItemGroup.TOOLS).maxCount(1)));
-	}
+	public void registerItems() { Registry.register(Registry.ITEM, Main.getId("magnet"), new MagnetItem(new Item.Settings().group(ItemGroup.TOOLS).maxCount(1))); }
 }

@@ -27,11 +27,7 @@ public class CustomShearsItem extends MiningToolItem
 	public boolean isEffectiveOn(BlockState state)
 	{
 		Block block = state.getBlock();
-		return BlockTags.WOOL.contains(block) ||
-				BlockTags.LEAVES.contains(block) ||
-				BlockTags.CARPETS.contains(block) ||
-				block == Blocks.COBWEB ||
-				block == Blocks.REDSTONE_WIRE ||
-				block == Blocks.TRIPWIRE;
+		return BlockTags.WOOL.contains(block) || BlockTags.LEAVES.contains(block) || BlockTags.CARPETS.contains(block) ||
+				block == Blocks.COBWEB || block == Blocks.REDSTONE_WIRE || block == Blocks.TRIPWIRE;
 	}
 }
