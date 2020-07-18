@@ -1,2 +1,2 @@
-# NonCorrelatedExtras
-~Currently only adds a mixin to force creepers to break blocks, not destroy.~
+# This repository is no longer being used, see:
+https://github.com/NinjaPhenix/FabricMods
