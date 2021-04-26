@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "noncorrelatedextras_farming_hoes",
+  "id": "noncorrelatedextras_farminghoes",
   "version": "${version}",
   "name": "Farming Hoes",
   "description": "Makes it so hoes can only break fully grown crops.",
@@ -15,7 +15,7 @@
   },
   "entrypoints": {
     "client": [
-      "ninjaphenix.noncorrelatedextras.module.farming_hoes.FarmingHoes"
+      "ninjaphenix.noncorrelatedextras.module.farminghoes.FarmingHoes"
     ]
   },
   "custom": {

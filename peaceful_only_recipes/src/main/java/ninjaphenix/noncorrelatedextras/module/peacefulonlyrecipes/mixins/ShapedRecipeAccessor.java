@@ -1,7 +1,7 @@
-package ninjaphenix.noncorrelatedextras.module.peaceful_only_recipes.mixins;
+package ninjaphenix.noncorrelatedextras.module.peacefulonlyrecipes.mixins;
 
 import net.minecraft.world.item.crafting.ShapedRecipe;
-import ninjaphenix.noncorrelatedextras.module.peaceful_only_recipes.recipe.RecipeGroupAccessor;
+import ninjaphenix.noncorrelatedextras.module.peacefulonlyrecipes.recipe.RecipeGroupAccessor;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

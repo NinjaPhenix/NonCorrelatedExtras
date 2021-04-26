@@ -1,4 +1,4 @@
-package ninjaphenix.noncorrelatedextras.module.peaceful_only_recipes;
+package ninjaphenix.noncorrelatedextras.module.peacefulonlyrecipes;
 
 import com.google.gson.JsonObject;
 import net.fabricmc.api.ModInitializer;
@@ -9,9 +9,9 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
 import ninjaphenix.noncorrelatedextras.Main;
-import ninjaphenix.noncorrelatedextras.module.peaceful_only_recipes.recipe.PeacefulOnlyShapedRecipe;
-import ninjaphenix.noncorrelatedextras.module.peaceful_only_recipes.recipe.PeacefulOnlyShapelessRecipe;
-import ninjaphenix.noncorrelatedextras.module.peaceful_only_recipes.recipe.RecipeGroupAccessor;
+import ninjaphenix.noncorrelatedextras.module.peacefulonlyrecipes.recipe.PeacefulOnlyShapedRecipe;
+import ninjaphenix.noncorrelatedextras.module.peacefulonlyrecipes.recipe.PeacefulOnlyShapelessRecipe;
+import ninjaphenix.noncorrelatedextras.module.peacefulonlyrecipes.recipe.RecipeGroupAccessor;
 
 public class PeacefulOnlyRecipes implements ModInitializer {
     @Override

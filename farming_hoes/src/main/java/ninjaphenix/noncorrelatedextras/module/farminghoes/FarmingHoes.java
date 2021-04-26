@@ -1,4 +1,4 @@
-package ninjaphenix.noncorrelatedextras.module.farming_hoes;
+package ninjaphenix.noncorrelatedextras.module.farminghoes;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
