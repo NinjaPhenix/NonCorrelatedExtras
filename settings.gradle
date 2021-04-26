@@ -9,3 +9,4 @@ pluginManagement {
 }
 
 include 'peaceful_only_recipes'
+include 'farming_hoes'

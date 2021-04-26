@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "ninjaphenix.noncorrelatedextras.mixins",
+  "package": "ninjaphenix.noncorrelatedextras.module.peaceful_only_recipes.mixins",
   "plugin": "ninjaphenix.noncorrelatedextras.config.MixinPlugin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [

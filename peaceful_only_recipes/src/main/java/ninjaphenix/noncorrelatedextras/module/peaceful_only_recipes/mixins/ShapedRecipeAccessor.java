@@ -1,4 +1,4 @@
-package ninjaphenix.noncorrelatedextras.mixins;
+package ninjaphenix.noncorrelatedextras.module.peaceful_only_recipes.mixins;
 
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import ninjaphenix.noncorrelatedextras.module.peaceful_only_recipes.recipe.RecipeGroupAccessor;
