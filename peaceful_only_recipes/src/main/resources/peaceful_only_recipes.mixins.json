@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "ninjaphenix.noncorrelatedextras.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ShapedRecipeAccessor",
+    "ShapelessRecipeAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

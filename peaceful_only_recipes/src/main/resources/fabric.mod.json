@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "noncorrelatedextras_peaceful_only_recipes",
+  "version": "${version}",
+  "name": "Peaceful Only Recipes",
+  "description": "Adds custom recipe types which can only be crafted in peaceful mode.",
+  "authors": [
+    "NinjaPhenix"
+  ],
+  "license": "${mod_license}",
+  "environment": "*",
+  "mixins": [
+    "peaceful_only_recipes.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "${minecraft_dependency}",
+    "noncorrelatedextras": "${nce_version}"
+  },
+  "entrypoints": {
+    "main": [
+      "ninjaphenix.noncorrelatedextras.module.peaceful_only_recipes.PeacefulOnlyRecipes"
+    ]
+  },
+  "custom": {
+    "modmenu": {
+      "parent": "noncorrelatedextras"
+    }
+  }
+}

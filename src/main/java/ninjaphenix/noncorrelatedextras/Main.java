@@ -1,17 +1,11 @@
 package ninjaphenix.noncorrelatedextras;
 
-import net.fabricmc.api.ModInitializer;
-import net.minecraft.util.Identifier;
-import ninjaphenix.noncorrelatedextras.core.FeatureManager;
+import net.minecraft.resources.ResourceLocation;
 
-public class Main implements ModInitializer
-{
-	public static final Main INSTANCE = new Main();
+public class Main {
+    public static final String MOD_ID = "noncorrelatedextras";
 
-	private Main() {}
-
-	public static Identifier getId(String path) { return new Identifier("noncorrelatedextras", path); }
-
-	@Override
-	public void onInitialize() { FeatureManager.initialise(); }
+    public static ResourceLocation resloc(String path) {
+        return new ResourceLocation(Main.MOD_ID, path);
+    }
 }

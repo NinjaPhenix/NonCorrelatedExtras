@@ -1,60 +1,81 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 plugins {
-    id 'fabric-loom' version '0.2.6-SNAPSHOT'
+    id 'fabric-loom' version '0.7-SNAPSHOT'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+allprojects {
+    apply plugin: 'fabric-loom'
 
-archivesBaseName = project.archives_base_name
-version = project.mod_version
-group = project.maven_group
+    project.setVersion(project.properties.mod_version)
+    project.setGroup(project.properties.maven_group)
+    project.setArchivesBaseName(project.properties.archives_base_name as String)
 
-repositories {
-    maven { url "https://minecraft.curseforge.com/api/maven" }
-    maven { url "https://tehnut.info/maven/" }
-    maven { url "http://server.bbkr.space:8081/artifactory/libs-release/"}
-    maven {url = "https://jitpack.io"}
-    maven {url = "https://maven.abusedmaster.xyz/"}
+    repositories {
+        maven {
+            name = 'Shedaniel'
+            url 'https://maven.shedaniel.me/'
+        }
+        maven {
+            name = 'TerraformersMC'
+            url = 'https://maven.terraformersmc.com/'
+        }
+    }
+
+    java {
+        withSourcesJar()
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(project.properties.source_java_version as int)
+        }
+    }
+
+    dependencies {
+        minecraft("com.mojang:minecraft:${project.properties.minecraft_version}")
+        mappings(loom.officialMojangMappings())
+        modImplementation("net.fabricmc:fabric-loader:${project.properties.fabric_loader_version}")
+        modImplementation("net.fabricmc.fabric-api:fabric-api:${project.properties.fabric_api_version}")
+    }
+
+    processResources {
+        def props = ['version'             : project.properties.version,
+                     'nce_version'         : rootProject.properties.version,
+                     'minecraft_dependency': rootProject.properties.minecraft_dependency,
+                     'mod_license'         : project.properties.mod_license]
+        inputs.properties props
+
+        filesMatching('fabric.mod.json') {
+            expand props
+        }
+
+        // MIT License, Copyright 2021 shedaniel (https://github.com/shedaniel)
+        // https://github.com/shedaniel/cloth-config-lite/blob/615f6ed8ebebb8cb973d4901565558ddc486e44c/build.gradle#L52-L57
+        // Minifies json files, todo: does not minify mixin json
+        doLast {
+            def slurper = new JsonSlurper()
+            fileTree(dir: outputs.files.asPath, include: "**/*.json").each {
+                File file -> file.text = JsonOutput.toJson(slurper.parse(file))
+            }
+        }
+    }
 }
+
+subprojects {
+    dependencies {
+        afterEvaluate {
+            compileOnly rootProject
+        }
+
+        //modCompile "com.github.emilyploszaj:trinkets:v2.3.0"
+    }
+}
+
 dependencies {
-    minecraft "com.mojang:minecraft:${minecraft_version}"
-    mappings "net.fabricmc:yarn:${minecraft_version}+${yarn_version}:v2"
-    modCompile "net.fabricmc:fabric-loader:${loader_version}"
-    modCompile("net.fabricmc.fabric-api:fabric-api:${fabric_version}")
+    modRuntime('me.shedaniel:RoughlyEnoughItems:5.11.202')
+    modRuntime('com.terraformersmc:modmenu:1.16.9')
 
-    modImplementation("me.shedaniel:RoughlyEnoughItems:${rei_version}") {
-        exclude(group: "net.fabricmc", module: "fabric-loader")
-        exclude(group: "net.fabricmc.fabric-api")
-        exclude(group: "io.github.prospector", module: "modmenu")
-    }
-
-    modImplementation("io.github.prospector:modmenu:${modmenu_version}") {
-        exclude(group: "net.fabricmc", module: "fabric-loader")
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-
-    modCompile "com.github.emilyploszaj:trinkets:v2.3.0"
-
-    modImplementation "io.github.cottonmc:Jankson-Fabric:2.0.1+j1.2.0"
-    include "io.github.cottonmc:Jankson-Fabric:2.0.1+j1.2.0"
-}
-
-processResources {
-    inputs.property "version", project.version
-    from(sourceSets.main.resources.srcDirs) {
-        include 'fabric.mod.json'
-        expand 'version': version
-    }
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'fabric.mod.json'
+    for (def proj : subprojects) {
+        runtimeOnly(proj)
+        include(proj)
     }
 }
-
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-jar {
-    from "LICENSE"
-}
-

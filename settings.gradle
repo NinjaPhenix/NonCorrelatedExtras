@@ -1,11 +1,11 @@
 pluginManagement {
     repositories {
-        jcenter()
         maven {
             name = 'Fabric'
-            //url = 'https://maven.fabricmc.net/'
-			url = 'http://maven.modmuss50.me'
+            url = 'https://maven.fabricmc.net/'
         }
         gradlePluginPortal()
     }
 }
+
+include 'peaceful_only_recipes'
