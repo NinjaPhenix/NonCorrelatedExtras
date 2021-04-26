@@ -3,7 +3,7 @@
   "id": "noncorrelatedextras_creepersbreakblocks",
   "version": "${version}",
   "name": "Creepers Break Blocks",
-  "description": "Makes it so creepers break blocks instead of destroying them.",
+  "description": "Makes creepers break blocks instead of destroying them.",
   "authors": [
     "NinjaPhenix"
   ],

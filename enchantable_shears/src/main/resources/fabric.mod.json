@@ -3,7 +3,7 @@
   "id": "noncorrelatedextras_enchantableshears",
   "version": "${version}",
   "name": "Enchantable Shears",
-  "description": "Makes it so shears can be enchanted.",
+  "description": "Makes shears enchantable.",
   "authors": [
     "NinjaPhenix"
   ],

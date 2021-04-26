@@ -3,7 +3,7 @@
   "id": "noncorrelatedextras_farminghoes",
   "version": "${version}",
   "name": "Farming Hoes",
-  "description": "Makes it so hoes can only break fully grown crops.",
+  "description": "Makes hoes only able to break fully grown crops.",
   "authors": [
     "NinjaPhenix"
   ],
