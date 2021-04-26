@@ -6,6 +6,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.CactusBlock;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.minecraft.world.level.block.CocoaBlock;
@@ -24,25 +25,18 @@ public class FarmingHoes implements ClientModInitializer {
             if (handStack.getItem() instanceof HoeItem) {
                 final BlockState state = world.getBlockState(pos);
                 final Block block = state.getBlock();
-                if (block instanceof CropBlock) {
-                    final CropBlock cropBlock = (CropBlock) block;
-                    if (state.getValue(cropBlock.getAgeProperty()) == cropBlock.getMaxAge()) {
-                        return InteractionResult.PASS;
+                if (block instanceof CropBlock || block instanceof CocoaBlock) {
+                    final BonemealableBlock growableBlock = (BonemealableBlock) block;
+                    if (growableBlock.isValidBonemealTarget(null, null, state, false)) {
+                        return InteractionResult.FAIL;
                     }
                 } else if (block instanceof CactusBlock || block instanceof SugarCaneBlock) {
-                    if (world.getBlockState(pos.below()).getBlock() == block) {
-                        return InteractionResult.PASS;
+                    if (world.getBlockState(pos.below()).getBlock() != block) {
+                        return InteractionResult.FAIL;
                     }
-                } else if (block instanceof CocoaBlock) {
-                    if (state.getValue(CocoaBlock.AGE) == 2) {
-                        return InteractionResult.PASS;
-                    }
-                } else if (block instanceof PumpkinBlock || block instanceof MelonBlock || block instanceof CarvedPumpkinBlock /* 1.12.2 support*/) {
-                    return InteractionResult.PASS;
                 }
-                return InteractionResult.FAIL;
             }
-            return InteractionResult.PASS;
+            return InteractionResult.PASS; // Don't affect other items / let other handlers execute.
         });
     }
 }
