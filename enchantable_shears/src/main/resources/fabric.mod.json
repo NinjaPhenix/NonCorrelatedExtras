@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "noncorrelatedextras_enchantableshears",
+  "version": "${version}",
+  "name": "Enchantable Shears",
+  "description": "Makes it so shears can be enchanted.",
+  "authors": [
+    "NinjaPhenix"
+  ],
+  "license": "${mod_license}",
+  "environment": "*",
+  "mixins": [
+    "enchantableshears.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "${minecraft_dependency}",
+    "noncorrelatedextras": "${nce_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "parent": "noncorrelatedextras"
+    }
+  }
+}

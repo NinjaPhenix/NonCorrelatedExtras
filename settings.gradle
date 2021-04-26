@@ -11,3 +11,4 @@ pluginManagement {
 include 'peaceful_only_recipes'
 include 'farming_hoes'
 include 'creepers_break_blocks'
+include 'enchantable_shears'

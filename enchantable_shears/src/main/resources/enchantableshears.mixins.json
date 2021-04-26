@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "ninjaphenix.noncorrelatedextras.module.enchantableshears.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ShearsEnchantmentValue", "DiggerEnchantmentCategoryAcceptShears"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
