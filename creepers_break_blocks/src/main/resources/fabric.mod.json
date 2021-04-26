@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "noncorrelatedextras_creepersbreakblocks",
+  "version": "${version}",
+  "name": "Creepers Break Blocks",
+  "description": "Makes it so creepers break blocks instead of destroying them.",
+  "authors": [
+    "NinjaPhenix"
+  ],
+  "license": "${mod_license}",
+  "environment": "*",
+  "mixins": [
+    "creepersbreakblocks.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "${minecraft_dependency}",
+    "noncorrelatedextras": "${nce_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "parent": "noncorrelatedextras"
+    }
+  }
+}
