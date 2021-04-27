@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "noncorrelatedextras_polarizediron",
+  "version": "${version}",
+  "name": "Polarized Iron",
+  "description": "Adds a magnet, polarized iron, and polarized iron armor which can reflect projectiles.",
+  "authors": [
+    "NinjaPhenix"
+  ],
+  "license": "${mod_license}",
+  "environment": "*",
+  "mixins": [
+    "polarizediron.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "${minecraft_dependency}"
+  },
+  "entrypoints": {
+    "main": [
+      "ninjaphenix.noncorrelatedextras.module.polarizediron.PolarizedIron"
+    ]
+  },
+  "custom": {
+    "modmenu": {
+      "parent": ${modmenu_parent_object}
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "noncorrelatedextras.tooltip.magnet.range": "Range: %s / %s",
+  "noncorrelatedextras.tooltip.magnet.extra_range": "%s (+%s from armor)",
+  "item.noncorrelatedextras.magnet": "Magnet",
+  "noncorrelatedextras.attribute.max_magnet_range": "Max Magnet Range",
+  "item.noncorrelatedextras.polarized_iron_helmet": "Polarized Iron Helmet",
+  "item.noncorrelatedextras.polarized_iron_chestplate": "Polarized Iron Chestplate",
+  "item.noncorrelatedextras.polarized_iron_leggings": "Polarized Iron Leggings",
+  "item.noncorrelatedextras.polarized_iron_boots": "Polarized Iron Boots",
+  "item.noncorrelatedextras.polarized_iron_ingot": "Polarized Iron Ingot",
+  "block.noncorrelatedextras.polarized_iron_block": "Polarized Iron Block",
+  "screen.noncorrelatedextras.magnet.range": "Magnet Range: %s",
+  "screen.noncorrelatedextras.magnet.pull": "Pull",
+  "screen.noncorrelatedextras.magnet.teleport": "Teleport",
+  "text.noncorrelatedextras.magnet.fail_update_value": "Failed to update magnet values, try again, if this persist please report as bug."
+}

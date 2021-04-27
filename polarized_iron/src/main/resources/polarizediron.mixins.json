@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "ninjaphenix.noncorrelatedextras.module.polarizediron.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "PolarizedArmorProjectileReflection"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
