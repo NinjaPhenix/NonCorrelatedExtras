@@ -38,10 +38,17 @@ allprojects {
     }
 
     processResources {
-        def props = ['version'             : project.properties.version,
-                     'nce_version'         : rootProject.properties.version,
-                     'minecraft_dependency': rootProject.properties.minecraft_dependency,
-                     'mod_license'         : project.properties.mod_license]
+        def props = ['version'              : project.properties.version,
+                     'nce_version'          : rootProject.properties.version,
+                     'minecraft_dependency' : rootProject.properties.minecraft_dependency,
+                     'mod_license'          : project.properties.mod_license,
+                     'modmenu_parent_object': """
+{
+  "id": "noncorrelatedextras",
+  "name": "NonCorrelatedExtras",
+  "description": "See sub-modules for more details about features."
+}
+"""]
         inputs.properties props
 
         filesMatching('fabric.mod.json') {

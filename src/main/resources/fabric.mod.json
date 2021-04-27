@@ -1,15 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "noncorrelatedextras",
+  "id": "fake_mod",
   "version": "${version}",
-  "name": "NonCorrelatedExtras",
-  "description": "",
+  "name": "Please Ignore, for testing",
   "authors": [
     "NinjaPhenix"
   ],
-  "license": "${mod_license}",
-  "environment": "*",
-  "depends": {
-    "minecraft": "${minecraft_dependency}"
-  }
+  "environment": "*"
 }

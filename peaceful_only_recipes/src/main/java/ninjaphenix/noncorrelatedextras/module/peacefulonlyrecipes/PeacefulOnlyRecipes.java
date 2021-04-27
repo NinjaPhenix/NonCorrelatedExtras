@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
-import ninjaphenix.noncorrelatedextras.Main;
 import ninjaphenix.noncorrelatedextras.module.peacefulonlyrecipes.recipe.PeacefulOnlyShapedRecipe;
 import ninjaphenix.noncorrelatedextras.module.peacefulonlyrecipes.recipe.PeacefulOnlyShapelessRecipe;
 import ninjaphenix.noncorrelatedextras.module.peacefulonlyrecipes.recipe.RecipeGroupAccessor;
@@ -16,7 +15,7 @@ import ninjaphenix.noncorrelatedextras.module.peacefulonlyrecipes.recipe.RecipeG
 public class PeacefulOnlyRecipes implements ModInitializer {
     @Override
     public void onInitialize() {
-        Registry.register(Registry.RECIPE_SERIALIZER, Main.resloc("peaceful_only_crafting_shaped"), new RecipeSerializer<PeacefulOnlyShapedRecipe>() {
+        Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation("noncorrelatedextras", "peaceful_only_crafting_shaped"), new RecipeSerializer<PeacefulOnlyShapedRecipe>() {
             @Override
             public PeacefulOnlyShapedRecipe fromJson(final ResourceLocation ID, final JsonObject JSON) {
                 return createRecipe(RecipeSerializer.SHAPED_RECIPE.fromJson(ID, JSON));
@@ -33,7 +32,7 @@ public class PeacefulOnlyRecipes implements ModInitializer {
             }
         });
 
-        Registry.register(Registry.RECIPE_SERIALIZER, Main.resloc("peaceful_only_crafting_shapeless"), new RecipeSerializer<PeacefulOnlyShapelessRecipe>() {
+        Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation("noncorrelatedextras", "peaceful_only_crafting_shapeless"), new RecipeSerializer<PeacefulOnlyShapelessRecipe>() {
             @Override
             public PeacefulOnlyShapelessRecipe fromJson(final ResourceLocation ID, final JsonObject JSON) {
                 return createRecipe(RecipeSerializer.SHAPELESS_RECIPE.fromJson(ID, JSON));

@@ -13,12 +13,11 @@
     "creepersbreakblocks.mixins.json"
   ],
   "depends": {
-    "minecraft": "${minecraft_dependency}",
-    "noncorrelatedextras": "${nce_version}"
+    "minecraft": "${minecraft_dependency}"
   },
   "custom": {
     "modmenu": {
-      "parent": "noncorrelatedextras"
+      "parent": ${modmenu_parent_object}
     }
   }
 }

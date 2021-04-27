@@ -10,8 +10,7 @@
   "license": "${mod_license}",
   "environment": "*",
   "depends": {
-    "minecraft": "${minecraft_dependency}",
-    "noncorrelatedextras": "${nce_version}"
+    "minecraft": "${minecraft_dependency}"
   },
   "entrypoints": {
     "client": [
@@ -20,7 +19,7 @@
   },
   "custom": {
     "modmenu": {
-      "parent": "noncorrelatedextras"
+      "parent": ${modmenu_parent_object}
     }
   }
 }
