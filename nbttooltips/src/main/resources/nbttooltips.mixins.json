@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "ninjaphenix.noncorrelatedextras.module.nbttooltips.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "ItemLinkingMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

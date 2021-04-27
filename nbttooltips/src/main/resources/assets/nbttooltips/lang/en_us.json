@@ -1,0 +1,10 @@
+{
+  "noncorrelatedextras.text.hold_alt": "(ALT)",
+  "noncorrelatedextras.text.hold_cmd": "(CMD)",
+  "noncorrelatedextras.text.hold_ctrl": "(CTRL)",
+  "noncorrelatedextras.text.nbt": "NBT: %s",
+  "noncorrelatedextras.text.data": "Data Tags: %s",
+  "noncorrelatedextras.text.handempty": "No item is being held.",
+  "noncorrelatedextras.text.handnonbt": "Item held contains no nbt data.",
+  "noncorrelatedextras.text.clicktocopy": "Click to copy NBT."
+}

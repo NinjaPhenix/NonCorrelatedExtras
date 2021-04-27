@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "noncorrelatedextras_nbttooltips",
+  "version": "${version}",
+  "name": "NBT Tooltips",
+  "description": "Adds various ways of viewing nbt data on blocks and items. Based on MetaTips by B0undarybreaker.",
+  "authors": [
+    "B0undarybreaker","NinjaPhenix"
+  ],
+  "license": "${mod_license}",
+  "environment": "*",
+  "mixins": [
+    "nbttooltips.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "${minecraft_dependency}"
+  },
+  "entrypoints": {
+    "main": [
+      "ninjaphenix.noncorrelatedextras.module.nbttooltips.NbtTooltips"
+    ],
+    "client": [
+      "ninjaphenix.noncorrelatedextras.module.nbttooltips.NbtTooltipsClient"
+    ]
+  },
+  "custom": {
+    "modmenu": {
+      "parent": ${modmenu_parent_object}
+    }
+  }
+}
