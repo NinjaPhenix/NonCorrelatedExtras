@@ -6,6 +6,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -20,6 +21,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import ninjaphenix.noncorrelatedextras.module.polarizediron.PolarizedIron;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -34,16 +36,17 @@ public class MagnetItem extends Item {
         super(properties);
     }
 
-    // todo: pass level in
-    public static void magnetTick(Player player, ItemStack stack) {
+    private static void magnetTick(ItemStack stack, Level level, Player player) {
         if (player.isCrouching()) {
             return;
         }
         ensureValidMagnetRange(player, stack);
         final int range = getMagnetRange(stack);
         final Vec3 finePos = player.position().add(0, 0.25, 0);
-        final List<ItemEntity> entities = player.getCommandSenderWorld().getEntities(EntityType.ITEM, new AABB(finePos.subtract(range, range, range),
-                                                                                                               finePos.add(range, range, range)), EntitySelector.NO_SPECTATORS);
+        final List<ItemEntity> entities = level.getEntities(
+                EntityType.ITEM,
+                new AABB(finePos.subtract(range, range, range), finePos.add(range, range, range)),
+                EntitySelector.NO_SPECTATORS);
         if (getMagnetMode(stack)) {
             for (ItemEntity item : entities) {
                 if (!item.hasPickUpDelay()) {
@@ -58,19 +61,19 @@ public class MagnetItem extends Item {
     }
 
     private static void ensureValidMagnetRange(Player player, ItemStack stack) {
-        final int range = getMagnetRange(stack);
+        final int range = MagnetItem.getMagnetRange(stack);
         if (range > MAX_RANGE) {
-            final int max = getMagnetMaxRange(player);
+            final int max = MagnetItem.getMagnetMaxRange(player);
             if (range > max) {
-                setMagnetRange(stack, max);
+                MagnetItem.setMagnetRange(stack, max);
             }
         }
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
         if (slot < 9 && entity instanceof Player) {
-            magnetTick((Player) entity, stack);
+            MagnetItem.magnetTick(stack, level, (Player) entity);
         }
     }
 
@@ -85,14 +88,15 @@ public class MagnetItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
-        ItemStack stack = user.getItemInHand(hand);
-        if (!world.isClientSide()) {
-            if (user.isCrouching()) {
-                // MagnetFeature.openMagnetScreen(user, stack); todo: implement screen opening
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (player.isCrouching()) {
+            if (!level.isClientSide()) {
+                PolarizedIron.openMagnetScreen((ServerPlayer) player, stack);
             }
+            return InteractionResultHolder.success(stack);
         }
-        return InteractionResultHolder.success(stack);
+        return InteractionResultHolder.pass(stack);
     }
 
     @Override

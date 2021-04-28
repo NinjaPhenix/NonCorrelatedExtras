@@ -31,47 +31,10 @@ import java.util.HashMap;
 
 public class MagnetFeature extends Feature implements ItemAdder
 {
-	public static final HashMap<PlayerEntity, ItemStack> USED_MAGNETS = new HashMap<>();
-	public static final Identifier MAGNET_OPEN_SCREEN_PACKET_ID = Main.getId("open_magnet_screen");
-	public static final Identifier UPDATE_VALUES_PACKET_ID = Main.getId("update_magnet_values");
-
-	public static void openMagnetScreen(PlayerEntity player, ItemStack stack)
-	{
-		USED_MAGNETS.put(player, stack);
-		PacketByteBuf buffer = new PacketByteBuf(Unpooled.buffer());
-		buffer.writeText(stack.getName());
-		buffer.writeInt(MagnetItem.getMagnetMaxRange(player));
-		buffer.writeInt(MagnetItem.getMagnetRange(stack));
-		buffer.writeBoolean(MagnetItem.getMagnetMode(stack));
-		ServerSidePacketRegistry.INSTANCE.sendToPlayer(player, MAGNET_OPEN_SCREEN_PACKET_ID, buffer);
-	}
-
 	@Override
 	public void initialise()
 	{
-		ServerSidePacketRegistry.INSTANCE.register(UPDATE_VALUES_PACKET_ID, (context, buffer) ->
-		{
-			int range = buffer.readInt();
-			boolean teleport = buffer.readBoolean();
-			PlayerEntity player = context.getPlayer();
-			context.getTaskQueue().execute(() ->
-			{
-				if (USED_MAGNETS.containsKey(player))
-				{
-					ItemStack stack = USED_MAGNETS.get(player);
-					MagnetItem.setMagnetMode(stack, teleport);
-					MagnetItem.setMagnetRange(stack, range);
-				}
-				else
-				{
-					player.sendMessage(new TranslatableText("text.noncorrelatedextras.magnet.fail_update_value"));
-				}
-				USED_MAGNETS.remove(player);
-			});
-		});
-
-		if (MagnetFeatureConfig.isTrinketLoaded)
-		{
+		if (MagnetFeatureConfig.isTrinketLoaded) {
 			TrinketSlots.addSlot(SlotGroups.HAND, Slots.RING, new Identifier("trinkets", "textures/item/empty_trinket_slot_ring.png"));
 			TrinketSlots.addSlot(SlotGroups.OFFHAND, Slots.RING, new Identifier("trinkets", "textures/item/empty_trinket_slot_ring.png"));
 		}
@@ -82,20 +45,7 @@ public class MagnetFeature extends Feature implements ItemAdder
 	{
 		static void init()
 		{
-			ClientSidePacketRegistry.INSTANCE.register(MAGNET_OPEN_SCREEN_PACKET_ID, (context, buffer) ->
-			{
-				Text title = buffer.readText();
-				int maxRange = buffer.readInt() - 1;
-				int currentRange = buffer.readInt();
-				boolean mode = buffer.readBoolean();
-				context.getTaskQueue().execute(() -> MinecraftClient.getInstance().openScreen(new MagnetScreen(title, maxRange, currentRange, mode)));
-			});
 
-			ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEX).register((spriteAtlasTexture, registry) ->
-			{
-				registry.register(Main.getId("screen/pull"));
-				registry.register(Main.getId("screen/teleport"));
-			});
 		}
 	}
 
@@ -105,7 +55,4 @@ public class MagnetFeature extends Feature implements ItemAdder
 	{
 		Client.init();
 	}
-
-	@Override
-	public void registerItems() { Registry.register(Registry.ITEM, Main.getId("magnet"), new MagnetItem(new Item.Settings().group(ItemGroup.TOOLS).maxCount(1))); }
 }

@@ -18,6 +18,9 @@
   "entrypoints": {
     "main": [
       "ninjaphenix.noncorrelatedextras.module.polarizediron.PolarizedIron"
+    ],
+    "client": [
+      "ninjaphenix.noncorrelatedextras.module.polarizediron.client.PolarizedIronClient"
     ]
   },
   "custom": {
